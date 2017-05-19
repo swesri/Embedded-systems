@@ -1,0 +1,43 @@
+/*
+p points to q pointer.
+q points to the head of the current list. current list pointer is incremented in each iteration.
+q->next points to q. 
+
+	|r0|r1|r2|r3|r4|r5(head)|NULL| ---> moves with each iteration.	
+				  
+		     	  ^	   	
+			  |	  
+				  	
+		q->next	| q |NULL|  ---> grows with each iteration.
+	           |	       ^	
+		   | 	       |
+		   |	       |
+		   |  	       | 
+		   |->>>>|p| --|	
+p->NULL
+q->r5
+q->next = NULL
+
+p->q->r5
+q->r4
+q->next = r5
+
+p->q->r4
+q->r3
+q->next = r4
+
+p->q->r3
+q->r2
+q->next = r3
+
+p->q->r2
+q->r1
+q->next = r2
+
+p->q->r1
+q->r0
+q->next = r1
+
+Now head becomes r0 in the q list
+		 
+*/

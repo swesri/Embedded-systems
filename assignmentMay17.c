@@ -12,8 +12,33 @@ Reversal of linked list
 #include<stdio.h>
 #include<stdlib.h>
 #include"linked_list.h"
+#define diagram 0
 
 struct node *a = NULL;
+
+
+void printfile()
+{
+	FILE *fptr;
+ 
+	char filename[100]= "diagram.txt", c;
+
+	fptr = fopen(filename, "r");
+	if (fptr == NULL)
+	{
+	printf("Cannot open file \n");
+	exit(0);
+	}
+
+	c = fgetc(fptr);
+	while (c != EOF)
+	{
+		printf ("%c", c);
+		c = fgetc(fptr);
+	}
+
+	fclose(fptr);
+}
 
 void reverse_May17(struct node *r)
 {
@@ -24,7 +49,29 @@ void reverse_May17(struct node *r)
 		q = r;
 		r = r->next;
 		q->next = p;
+		if(p!=NULL)
+			printf("q value:%d\t pvalue:%d\n",q->data,p->data);
 	}
+	
+	if(diagram)
+		printfile();
+	/*
+	p points to q pointer.
+	q points to the head of the current list. current list pointer is incremented in each iteration.
+	q->next points to q. 
+
+		|r0|r1|r2|r3|r4|r5(head)|NULL| ---> moves with each iteration.	
+					  
+			     	  ^	   	
+				  |	  
+					  	
+			q->next	| q |NULL|  ---> grows with each iteration.
+		           |	       ^	
+			   | 	       |
+			   |	       |
+			   |  	       | 
+			   |->>>>|p| --|			 
+	*/
 	a = q;
 }
 
